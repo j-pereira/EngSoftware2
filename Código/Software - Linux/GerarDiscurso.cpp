@@ -1,6 +1,7 @@
 #include "GerarDiscurso.h"
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <stdlib.h>
 
 using namespace std;
@@ -9,7 +10,7 @@ GerarDiscurso::GerarDiscurso(){
 	c1[0] = "Caros colegas, ";
 	c1[1] = "Por outro lado, ";
 	c1[2] = "Não podemos esquecer que ";
-	c1[3] = "Do mesmo modo,  ";
+	c1[3] = "Do mesmo modo, ";
 	c1[4] = "A prática mostra que ";
 	c1[5] = "Nunca é demais insistir que ";
 	c1[6] = "A experiência mostra que ";
@@ -93,16 +94,19 @@ void GerarDiscurso :: exibir(string discurso){
 int GerarDiscurso :: salvar(){
 	FILE *arq;
 	int i=1;
-	char c;
-	string path = "";
+	string path = "", c;
 	const char *caminho;
 
 	while(1){
-		c = '0' + i;
+		ostringstream convert;
+		convert << i;
+		c = convert.str();
 		path += "Discursos/";
 		path += c;
 		path += ".txt";
 		caminho = path.c_str();
+
+		cout << caminho << endl;
 
 		arq = fopen(caminho, "r");
 		if(arq == NULL)
@@ -125,12 +129,13 @@ int GerarDiscurso :: apagarTmp(){
 void GerarDiscurso :: listarSalvos(){
 	FILE *arq;
 	int i=1;
-	char c;
-	string path = "";
+	string path = "", c;
 	const char *caminho;
 
 	while(1){
-		c = '0' + i;
+		ostringstream convert;
+		convert << i;
+		c = convert.str();
 		path += "Discursos/";
 		path += c;
 		path += ".txt";
@@ -150,22 +155,26 @@ void GerarDiscurso :: listarSalvos(){
 
 int GerarDiscurso :: consultar(int i){
 	FILE *arq;
-	string path = "";
-	char c, cadeia[250];
+	string path = "", c;
+	char cadeia[250];
 	const char *caminho;
 
-	c = '0' + i;
+	ostringstream convert;
+	convert << i;
+	c = convert.str();
 	path += "Discursos/";
 	path += c;
 	path += ".txt";
 	caminho = path.c_str();
 
 	arq = fopen(caminho, "r");
-	if(arq == NULL)
+	if(arq == NULL){
 		return 1;
-	while(feof(arq) == 0){
-		fgets(cadeia, 250, arq);
-		cout << cadeia;
+	}else{
+		while(feof(arq) == 0){
+			fgets(cadeia, 250, arq);
+			cout << cadeia;
+		}
 	}
 	
 }
