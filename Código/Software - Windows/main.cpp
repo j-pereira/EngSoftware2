@@ -133,6 +133,6 @@ int main() {
 
 	exibirMenu();
 	return 0;
-	//system("pause");
+	system("pause");
 }
 
