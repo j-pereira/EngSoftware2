@@ -106,8 +106,6 @@ int GerarDiscurso :: salvar(){
 		path += ".txt";
 		caminho = path.c_str();
 
-		cout << caminho << endl;
-
 		arq = fopen(caminho, "r");
 		if(arq == NULL)
 			break;
