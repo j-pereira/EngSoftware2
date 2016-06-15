@@ -124,7 +124,7 @@ int GerarDiscurso :: apagarTmp(){
 }
 
 
-void GerarDiscurso :: listarSalvos(){
+int GerarDiscurso :: listarSalvos(){
 	FILE *arq;
 	int i=1;
 	string path = "", c;
@@ -148,6 +148,7 @@ void GerarDiscurso :: listarSalvos(){
 		path = "";
 		i++;
 	}
+	return i;
 }
 
 

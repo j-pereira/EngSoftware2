@@ -13,7 +13,7 @@ class GerarDiscurso{
 		void exibir(string discurso);
 		int salvar();
 		int apagarTmp();
-		void listarSalvos();
+		int listarSalvos();
 		int consultar(int i);
 };
 

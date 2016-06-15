@@ -54,7 +54,7 @@ void exibirMenu (){
 				case 1:
 					res = discurso.salvar();
 					if(res == 0)
-						printf("Discurso salvo com sucesso! Para consultá-lo, acesse o ítem 2 no menu.\n\n");
+						printf("Discurso salvo com sucesso! Para consultá-lo, acesse o último discurso no ítem 2 no menu.\n\n");
 					else
 						printf("Erro ao salvar o discurso.\n");
 					printf("Pressione qualquer tecla para voltar ao menu: ");
@@ -88,7 +88,9 @@ void exibirMenu (){
 			system("clear");
 			printf("\n\tHistórico de Discursos\n\n");
 			printf("Digite o número correspondente ao discurso que deseja consultar:\n");
-			discurso.listarSalvos();
+			res = discurso.listarSalvos();
+			if(res == 1)
+					printf("Não há discursos salvos em histórico.\n");
 			printf("\n0. Voltar\n");
 		
 			printf("Opção: ");
